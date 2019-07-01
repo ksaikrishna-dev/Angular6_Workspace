@@ -1,0 +1,30 @@
+<div class="col-md-6">
+  <h2 class="text-center">Edit User</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input formControlName="firstName" placeholder="First Name" name="firstName" class="form-control" id="firstName"
+          [ngClass]="{ 'is-invalid': submitted && editForm.controls.firstName.errors }"  />
+          <div *ngIf="submitted && editForm.controls.firstName.errors" class="invalid-feedback">
+            <div *ngIf="editForm.controls.firstName.errors.required">First Name is required</div>
+          </div>  
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input formControlName="lastName" placeholder="Last name" name="lastName" class="form-control" id="lastName">
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <input formControlName="address" placeholder="Address" name="address" class="form-control" id="address">
+    </div>
+
+    <div class="btn-group btn-group-sm">
+      <button class="btn btn-success" [disabled]="editForm.invalid">Update</button> &nbsp;
+      <button type="button" class="btn btn-dark" (click)="goBack()">Back</button>
+    </div>  
+
+  </form>
+</div>
